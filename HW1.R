@@ -1,6 +1,8 @@
 # 1. Use ”Su_raw_matrix.txt” for the following questions (30 points).
 # Preliminary Stuff
 install.packages('systemfonts')
+install.packages('textshaping')
+
 install.packages(c('googledrive', 'googlesheets4', 'httr', 'ragg', 'rvest', 'xml2'))
 install.packages("ggplot2")
 install.packages("tidyverse")
@@ -82,17 +84,19 @@ ggplot(diabetes, aes(x=mass, colour=class)) + geom_density()
 ggplot(diabetes, aes(x=mass, fill=class)) + geom_density(alpha=.3)
 
 # Problem 4
-library(tidyvr)
+library(tidyverse)
 passengers <- read.csv('/home/jj/Downloads/Data/titanic.csv')
 
-# (a) 
+# (a) Drop all non-numerical or null values from the dataset and print a summary
 passengers %>% drop_na() %>% summary()
-# (b) 
+# (b) Return only the rows where the Sex variable='male'
 passengers %>% filter(Sex == "male")
-# (c) 
+# (c) Sort the dataset by the fare column
 passengers %>% arrange(desc(Fare))
-# (d) 
+# (d) Add a column named family size that is the sum of the columns Parch and SibSp
 passengers %>% mutate(FamSize = Parch + SibSp)
-#(e) 
+#(e) Get the average fare and add up number of survivors by sex
 passengers %>% group_by(Sex) %>% summarise(meanFare = mean(Fare), numSurv = sum(Survived))
 
+# Problem 5
+quantiles <- quantile(diabetes$skin, probs = c(0.10, 0.30, 0.50, 0.60))
