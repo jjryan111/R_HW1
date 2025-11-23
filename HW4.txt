@@ -1,0 +1,104 @@
+﻿
+Q1:
+Given P(C)i=1∏n​P(xi​∣C)
+ And status in [junior, senior]
+ And
+
+    department age salary status count
+sales 31_35 46K_50K senior 30
+sales 26_30 26K_30K junior 40
+sales 31_35 31K_35K junior 40
+systems 21_25 46K_50K junior 20
+systems 31_35 66K_70K senior 5
+systems 26_30 46K_50K junior 3
+systems 41_45 66K_70K senior 3
+marketing 36_40 46K_50K senior 10
+marketing 31_35 41K_45K junior 4
+secretary 46_50 36K_40K senior 4
+secretary 26_30 26K_30K junior 6
+
+--- P(status overall) ---
+ P(junior) = 6/11
+ P(senior) = 5/11
+
+--- P(department) ---
+ P(sales | senior) = 1/5
+ P(sales | junior) = 2/6
+ P(systems | senior) = 2/5
+ P(systems | junior) = 2/6
+ P(marketing | senior) = 1/5
+ P(marketing | junior) = 1/6
+ P(secretary | senior) = 1/5
+ P(secretary | junior) = 1/6
+
+ --- P(age) ---
+ P(21_25 | senior) = 0
+ P(21_25 | junior) = 1/6
+ P(26_30 | senior) = 0
+ P(26_30 | junior) = 3/6
+ P(31_35 | senior) = 2/5
+ P(31_35 | junior) = 2/6
+ P(36_40 | senior) = 1/5
+ P(36_40 | junior) = 0
+ P(41_45 | senior) = 1/5
+ P(41_45 | junior) = 0
+ P(46_50 | senior) = 1/5
+ P(46_50 | junior) = 0
+
+--- P(salary) ---
+ P(26_30k | senior) = 0
+ P(26_30k | junior) = 2/6
+ P(31_35k | senior) = 0
+ P(31_35k | junior) = 1/6
+ P(36_40k | senior) = 1/5
+ P(36_40k | junior) = 0
+ P(41_45k | senior) = 0
+ P(41_45k | junior) = 1/6
+ P(46_50k | senior) = 2/5
+ P(46_50k | junior) = 2/6
+ P(66_70k | senior) = 2/5
+ P(66_70k | junior) = 0
+
+--- P(status) ---
+ P(senior | (systems, 26_30, 46K_50K)) =  5/11 * 2/5 * 0 * 2/5 = 0
+
+Q3:
+If h and c are clusters. the initial analysis looks like this: 
+For point a Distance to c = |2-8| + |10-4| = 12 
+Distance to h = |2-4| + 10-9| = 3 
+Assign to cluster h 
+Repeating for the rest, assignments are: 
+a -> h 
+b -> h 
+c -> cluster center (c) 
+d -> h 
+e -> c 
+f -> c 
+g -> c 
+h -> cluster center (h)
+Centroids (median) the calculations look like this:
+c (means) = ((8+7+6+1)/4, (5+4+2+ 2)/4) = (5.5, 3.75) 
+h (means) = ((2+2+5+4)/4 +(10+5+8+9)/4) = (3.25, 8)
+Reassigning memberships as centroids 1 & 2: 
+a -> 2 
+b -> 2 
+c -> 1 
+d -> 2 
+e -> 1 
+f -> 1 
+g -> 1 
+h -> 2
+
+
+
+Q4b:
+a is core to b,d,h
+b is core to a,c,d,e,f,g,h
+c is core to b,d,e,f,g,h
+d is core to a,b,c,e,f,g,h
+e is core to b,c,d,h
+f is core to b,c,d,g,h
+g is core to b,c,d,f,h
+h is core to a,b,c,d,e,f,g
+
+All are core points if  ε = 6 and minP ts = 2
