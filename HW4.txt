@@ -61,6 +61,7 @@ secretary 26_30 26K_30K junior 6
 
 --- P(status) ---
  P(senior | (systems, 26_30, 46K_50K)) =  5/11 * 2/5 * 0 * 2/5 = 0
+ P(junior | (systems, 26_30, 46K_50K)) =  6/11 * 2/6 * 3/6 * 2/6 = 0.03
 
 Q3:
 If h and c are clusters. the initial analysis looks like this: 
