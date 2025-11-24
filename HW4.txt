@@ -90,7 +90,25 @@ f -> 1
 g -> 1 
 h -> 2
 
+Q4a
+Distance(1)
 
+c → e
+e → f
+d → h
+
+Cluster (c,e) at distance 1
+Cluster (d,h) at distance 1
+
+Distance (f → (c,e)) = min(f,c = 2, f,e = 1) = 1
+(c,e) → (c,e,f)
+
+Distance (a → (d,h)) = min(a,d = 4, a,h = 2) = 2
+(d,h) → (a,d,h)
+
+Cluster (b.g) at distance 3
+
+d joins all clusters at distance 4
 
 Q4b:
 a is core to b,d,h
